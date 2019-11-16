@@ -1,0 +1,79 @@
+.index-list {
+	padding: 10upx;
+	border-bottom: 1px solid #E5E5E5;
+	.list-person {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		.list-left {
+			display: flex;
+			align-items: center;
+
+			image {
+				width: 80upx;
+				height: 80upx;
+				border-radius: 100%;
+				margin-right: 16upx;
+			}
+		}
+		.list-right {
+			margin-right: 30upx;
+			.attention {
+				font-size: 30upx;
+				border: 1px solid #cccccc;
+				border-radius: 8upx;
+				background: #ffff00;
+				margin-right: 10upx;
+				padding: 0 10upx;
+				&.select {
+					background: #f3f0eb;
+				}
+			}
+		}
+	}
+	.lis-title {
+		margin: 20upx;
+		font-size: 40upx;
+	}
+	.list-img {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		position: relative;
+		color: #ffffff;
+		image {
+			border-radius: 20upx;
+		}
+		.video-paly {
+			position: absolute;
+			font-size: 140upx;
+			color: #ffffff;
+		}
+		.video-msg {
+			position: absolute;
+			bottom: 10upx;
+			right: 50upx;
+			padding: 0 20upx;
+			background: rgba(0, 0, 0, 0.6);
+			border-radius: 20upx;
+		}
+	}
+	.list-comment {
+		display: flex;
+		justify-content: space-between;
+		align-content: center;
+		margin: 10upx;
+		color: #d4d4d4;
+		.list-left,
+		.list-right {
+			display: flex;
+			> view {
+				margin-right: 16upx;
+			}
+			.iconfont.active {
+				color: #ffb700;
+			}
+		}
+	}
+}

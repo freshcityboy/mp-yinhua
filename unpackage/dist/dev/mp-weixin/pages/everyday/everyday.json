@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "每日更新",
+  "usingComponents": {
+    "everyday-list": "/components/everyday/everyday-list",
+    "head-tab": "/components/everyday/head-tab",
+    "loading-tip": "/components/common/loading-tip",
+    "loading": "/components/common/loading"
+  }
+}

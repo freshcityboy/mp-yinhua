@@ -1,0 +1,1 @@
+<view class="animated fadeIn data-v-356175af"><block wx:if="{{show}}"><view data-event-opts="{{[['tap',[['toggleShow',['$event']]]]]}}" class="{{['mask data-v-356175af',(light)?'light':'']}}" bindtap="__e"></view></block></view>

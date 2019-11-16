@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/admin/admin",
+    "pages/profile/profile",
+    "pages/play-recorde/play-recorde",
+    "pages/profile-like/profile-like",
+    "pages/everyday/everyday",
+    "pages/everyday-list-detail/everyday-list-detail",
+    "pages/paper/paper",
+    "pages/search/search"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "嗅事百科",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#FFFFFF"
+  },
+  "tabBar": {
+    "color": "#ADADAD",
+    "selectedColor": "#4d9df5",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/tableBar/index.png",
+        "selectedIconPath": "static/tableBar/index-on.png"
+      },
+      {
+        "pagePath": "pages/everyday/everyday",
+        "text": "每日更新",
+        "iconPath": "static/tableBar/news.png",
+        "selectedIconPath": "static/tableBar/news-on.png"
+      },
+      {
+        "pagePath": "pages/paper/paper",
+        "text": "小纸条",
+        "iconPath": "static/tableBar/paper.png",
+        "selectedIconPath": "static/tableBar/paper-on.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "static/tableBar/home.png",
+        "selectedIconPath": "static/tableBar/home-on.png"
+      }
+    ]
+  },
+  "useingcomponents": true,
+  "usingComponents": {},
+  "sitemapLocation": "sitemap80.json"
+}

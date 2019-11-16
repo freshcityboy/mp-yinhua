@@ -1,0 +1,1 @@
+<view class="data-v-f0ce4f80"><view class="index-list data-v-f0ce4f80"><my-video vue-id="1" item="{{item}}" trimVideoUrl="{{trimVideoUrl}}" class="data-v-f0ce4f80" bind:__l="__l"></my-video></view></view>

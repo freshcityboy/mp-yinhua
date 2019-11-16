@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "get-user-info": "/components/common/getUserInfo",
+    "index-list-item": "/components/index/index-list-item"
+  }
+}

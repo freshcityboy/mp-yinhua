@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "play-recorde-list-item": "/components/play-recorde/play-recorde-list-item"
+  }
+}
