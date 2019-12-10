@@ -1,20 +1,15 @@
 <template>
-	<view>	
+	<view class="animated fadeUp fast">	
 		<!-- 已登陆 -->
+		<getUserInfo :isRefresh="isRefresh"></getUserInfo>
 		<template>
-			<view class="my-info u-f">
+			<view class="my-info u-f-ac">
 				<image :src="userInfo.avatarUrl" mode="widthFix"></image>
 				<view class="username" @tap="gotoPage">
 					<view>{{userInfo.nickName}}</view>
-					<view>总访客0 今日0</view>
 				</view>
-				<view class="u-f-ac icon iconfont icon-jinru"></view>
+				<view class="u-f-ac icon iconfont icon-shuaxin" @tap="refresh"></view>
 			</view>
-			<!-- 糗事状态 -->
-			<!-- <home-state :list="list"></home-state> -->
-			<!-- 广告位	 -->
-			<!-- <hoeme-advertisement></hoeme-advertisement> -->
-			<!-- 功能列表 -->
 			<profile-list :likeLength="likeLength" :userInfo="userInfo" :playInfo="playInfo"></profile-list>
 		</template>
 	</view>
@@ -22,11 +17,13 @@
 
 <script>
 	import profileList from "../../components/profile/profile-list.vue"
+	import getUserInfo from "../../components/common/getUserInfo.vue"
 	export default {
 		data() {
 			return {
 				userInfo:{},
-				playInfo:{}
+				playInfo:{},
+				isRefresh:false
 			}
 		},
 		computed:{
@@ -37,6 +34,9 @@
 			}
 		},
 		methods: {
+			refresh(){
+				this.isRefresh = true
+			}
 		},
 		onLoad(){
 			this.userInfo =  getApp().globalData.userInfo
@@ -47,7 +47,8 @@
 			})
 		},
 		components:{
-			profileList
+			profileList,
+			getUserInfo
 		}
 	}
 </script>
@@ -64,15 +65,14 @@
 		.username{
 			flex: 1;
 			>view:first-child{
-				font-size: 35upx;
+				font-size: 40upx;
 			}
-			>view:last-child{
-				color: #BEBEBE;
-				font-size: 20upx;
-			}
+			
 		}
-		.icon-jinru{
+		.icon-shuaxin{
 			width: 50upx;
+			font-size: 40upx;
+			margin-right: 20upx;
 		}
 	}
 </style>

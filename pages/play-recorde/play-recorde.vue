@@ -14,7 +14,8 @@
 				:duration="durationList[index]"
 				@longpresHandler="isShowEdit" 
 				@selsect="selsect" 
-				@noSelect="noSelect">
+				@noSelect="noSelect"
+				@tap="gotoVideo(item)">
 			</play-recorde-list-item>
 		</block>	
 		<view class="bottom-bar u-f-jsb animated fadeInUp fast" v-show="showEdit">
@@ -56,15 +57,22 @@ export default {
 	onLoad(data) {
 		let {timePercent,currentTimeList,durationList} = JSON.parse(data.obj);
 		console.log(data.obj);
-		this.timePercent = timePercent
-		this.currentTimeList = currentTimeList
-		this.durationList = durationList	
+		this.timePercent = timePercent;
+		this.currentTimeList = currentTimeList;
+		this.durationList = durationList;	
 		this.playInfo = getApp().globalData.playInfo;
 	},
 	onReady() {
 		console.log(this.playInfo[0].timeStamp);
 	},
 	methods: {
+		gotoVideo(item){
+			uni.navigateTo({
+				url:"../everyday-list-detail/everyday-list-detail?item=" + JSON.stringify(item)
+		
+			})
+			console.log(item);
+		},
 		isShowEdit(){ // 是否显示编辑框
 			this.showEdit = !this.showEdit
 		},

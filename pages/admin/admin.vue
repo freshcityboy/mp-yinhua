@@ -1,16 +1,19 @@
 <template>
 	<view>
-		<button hover-class="active" type="primary"  @tap="update('getWeekList')">一键更新周更列表信息</button>
-		<button hover-class="active" type="primary" @tap="update('doWeekUpdate')">一键更新周更视频播放地址</button>
-		<view class="add">
-			<input type="text" v-model="vID" placeholder="请输入新番的vID"/>
-			<checkbox-group @change="change">
-				<label>
-					<checkbox :checked="isAddRecommend" />是否添加到好番推荐
-				</label>
-			</checkbox-group>
-		</view>
-		<button hover-class="active"  type="primary" @tap="add">添加新番</button>
+		<view v-if="!isAdmin">对不起，您不是管理员</view>
+		<template v-else>
+			<button hover-class="active" type="primary"  @tap="update('getWeekList')">一键更新周更列表信息</button>
+			<button hover-class="active" type="primary" @tap="update('doWeekUpdate')">一键更新周更动漫</button>
+			<view class="add">
+				<input type="text" v-model="vID" placeholder="请输入新番的vID"/>
+				<checkbox-group @change="change">
+					<label>
+						<checkbox :checked="isAddRecommend" />是否添加到好番推荐
+					</label>
+				</checkbox-group>
+			</view>
+			<button hover-class="active"  type="primary" @tap="add">添加新番</button>
+		</template>
 	</view>
 </template>
 
@@ -21,21 +24,33 @@
 		data() {
 			return {
 				vID:'',
-				isAddRecommend: true
+				isAddRecommend: true,
+				userInfo:''
 			}
+		},
+		computed:{
+			isAdmin(){
+				return this.userInfo.openId === 'oG4nU5N33zP1Q0DeCUSz88mjhsdQ'
+			}
+		},
+		onLoad() {
+			this.userInfo = getApp().globalData.userInfo
+		},
+		onReady() {
+			console.log(this.userInfo);
 		},
 		methods: {
 			change(){
 				this.isAddRecommend = !this.isAddRecommend
 			},
 			update(name){
-				wx.cloud.callFunction({ // 调用云函数读取用户信息
+				wx.cloud.callFunction({ // 
 				  // 要调用的云函数名称
 				  name,
 				  success: res => { 
+					  console.log(res);
 					  uni.showModal({
 					  	title: '更新成功' 
-						
 					  })
 				  },
 				  fail: err => {

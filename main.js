@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import App from './App'
 import store from './store/'
+import api from "./api/index.js"
+
 Vue.config.productionTip = false
 
 App.mpType = 'app'
 // #ifdef MP-WEIXIN
 
 // #endif
-
+Vue.prototype.$api = api 
 Vue.prototype.fomatTime = function (value) { // 00:00 格式化时间
 	let m = parseInt(value / 60)
 	let s = parseInt(value - m*60)

@@ -1,39 +1,35 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		
 		{
 			"path": "pages/index/index",
 			"style": {
+				"enablePullDownRefresh":true
+			}
+		}
+		,{
+		    "path" : "pages/everyday-list-detail/everyday-list-detail",
+		    "style" : {
 				"app-plus":{
 					"scrollIndicator":"none",
+					"bounce":"none",
 					"titleNView":{
-						"searchInput":{
-							"align":"center",
-							"backgroundColor":"#F7F7F7",
-							"borderRadius":"8px",
-							"disabled":true,
-							"placeholder":"搜索糗事",
-							"placeholderColor":"#CCCCCC"
-						},
+						"titleText":"内容页",
 						"buttons":[
 							{
-								"float":"left",
-								"color":"#FE910F",
-								"fontSize":"20px",
-								"fontSrc":"/static/font/iconfont.ttf",
-								"text":"\ue606"
-								
-							},
-							{
 								"float":"right",
-								"color":"#000000",
-								"fontSize":"20px",
-								"fontSrc":"/static/font/iconfont.ttf",
-								"text":"\ue617"
+								"type":"menu"
 							}
 						]
+						
 					}
 				}
+			}
+		}
+		
+		,{
+		    "path" : "pages/search/search",
+		    "style" : {
+				
 			}
 		}
 		,{
@@ -58,13 +54,10 @@
 				}
 			}
 		}
-		
 		,{
 		    "path" : "pages/play-recorde/play-recorde",
 		    "style" : {}
 		}
-		
-		
 		,{
 		    "path" : "pages/profile-like/profile-like",
 		    "style" : {
@@ -86,90 +79,23 @@
 		,{
 		    "path" : "pages/everyday/everyday",
 		    "style" : {
-				"navigationBarTitleText":"每日更新"
+				"navigationBarTitleText":"每日更新",
+				"enablePullDownRefresh":true
 			}
 		}
 		
-		
-		
-		,{
-		    "path" : "pages/everyday-list-detail/everyday-list-detail",
-		    "style" : {
-				"app-plus":{
-					"scrollIndicator":"none",
-					"bounce":"none",
-					"titleNView":{
-						"titleText":"内容页",
-						"buttons":[
-							{
-								"float":"right",
-								"type":"menu"
-							}
-						]
-						
-					}
-				}
-			}
-		}
-		
-		
-		,{
-		    "path" : "pages/paper/paper",
-		    "style" : {
-				"enablePullDownRefresh":true,
-				"app-plus":{
-					"scrollIndicator":"none",
-					"titleNView":{
-						"titleText":"小纸条",
-						"buttons":[
-							{
-								"float":"left",
-								"type":"menu"
-							},
-							{
-								"float":"right",
-								"type":"favorite"
-							}
-						]
-					}
-				}
-			}
-		}
-		,{
-            "path" : "pages/search/search",
-            "style" : {
-				"app-plus":{
-					"scrollIndicator":"none",
-					"titleNView":{
-						"autoBackButton": false,
-						"searchInput":{
-							"align":"left",
-							"backgroundColor":"#F6F7F7",
-							"borderRadius":"8px",
-							"disabled":false,
-							"autoFocus":true,
-							"placeholder":"搜索糗事"
-						},
-						"buttons":[
-							{
-								"float":"right",
-								"color":"#000000",
-								"fontSize":"16px",
-								"text":"取消"
-							}
-						]
-					}
-				}
-			}
-        }
-        
-        
+	  
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "嗅事百科",
+		"navigationBarTitleText": "馋动漫",
 		"navigationBarBackgroundColor": "#FFFFFF",
-		"backgroundColor": "#FFFFFF"
+		"backgroundColor": "#FFFFFF",
+		"style": {  
+		  "app-plus": {  
+		      "background":"#000000"
+		  }  
+		}
 	},
 	"tabBar":{
 		"color":"#ADADAD",
@@ -190,16 +116,10 @@
 				"selectedIconPath":"static/tableBar/news-on.png"
 			},
 			{
-				"pagePath":"pages/paper/paper",
-				"text":"小纸条",
-				"iconPath":"static/tableBar/paper.png",
-				"selectedIconPath":"static/tableBar/paper-on.png"
-			},
-			{
 				"pagePath":"pages/profile/profile",
 				"text":"我的",
-				"iconPath":"static/tableBar/home.png",
-				"selectedIconPath":"static/tableBar/home-on.png"
+				"iconPath":"static/tableBar/profile.png",
+				"selectedIconPath":"static/tableBar/profile-on.png"
 			}
 		]
 		

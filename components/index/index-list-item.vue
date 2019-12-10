@@ -8,7 +8,8 @@
 				<block v-for="(item,index1) in item.style" :key="index1">
 					<text space="nbsp"></text>
 				</block></view>
-			<view class="recent-updates">{{item.recentUpdate}}集全</view>
+			<view class="recent-updates" v-if="item.updateDay >= 0">已更{{item.recentUpdate}}集</view>
+			<view class="recent-updates" v-else>{{item.recentUpdate}}集全</view>
 		</view>
 		<view class="like">
 			<view  :class="{active:isLike}" @tap.stop="like(item.vID)">{{isLike?'已追番':'追番'}}</view>
@@ -17,6 +18,7 @@
 </template>
 
 <script>
+	import api from "../../api/index.js"
 	export default {
 		props:{
 			item:Object		
@@ -39,16 +41,13 @@
 				this.isLike = !this.isLike
 				let like = getApp().globalData.userInfo.like
 				
-				let idx = like.findIndex(item => {
+				let idx = like.findIndex(item => { // 寻找是否有vID，返回下标
 					return item.vID === vID
 				})
 				if(idx === -1){ // 如果数组中没有就添加，反之则删除
-					const {reqDetailInfo} = api 
-					reqDetailInfo({vID}).then(res => {
-						let obj = Object.assign(res[0],{playIndex:this.playIndex})
-						like.push(obj)
-					})
-					
+					let playIndex = this.playIndex || null
+					let obj = Object.assign(this.item,{playIndex})
+					like.push(obj)
 				}else{
 					like.splice(idx,1)
 				}

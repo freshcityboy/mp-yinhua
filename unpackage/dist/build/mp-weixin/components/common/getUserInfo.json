@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "mask-layer": "/components/common/mask-layer"
+  },
+  "component": true
+}

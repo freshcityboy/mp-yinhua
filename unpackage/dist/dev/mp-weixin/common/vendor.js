@@ -1497,82 +1497,6 @@ uni$1;exports.default = _default;
 
 /***/ }),
 
-/***/ 118:
-/*!*******************************************************************************!*\
-  !*** C:/Users/Administrator/Documents/HBuilderProjects/mytest/common/time.js ***!
-  \*******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var gettime = {
-  // 获取聊天时间（相差300s内的信息不会显示时间）
-  getChatTime: function getChatTime(v1, v2) {
-    v1 = v1.toString().length < 13 ? v1 * 1000 : v1;
-    v2 = v2.toString().length < 13 ? v2 * 1000 : v2;
-    if ((parseInt(v1) - parseInt(v2)) / 1000 > 300) {
-      return this.gettime(v1);
-    }
-  },
-  // 人性化时间格式
-  gettime: function gettime(shorttime) {// 注意：时间戳必须为Number类型的
-    console.log(new Date(shorttime));
-    shorttime = shorttime.toString().length < 13 ? shorttime * 1000 : shorttime;
-    var now = new Date().getTime();
-    var cha = (now - parseInt(shorttime)) / 1000;
-
-    if (cha < 43200) {
-      // 当天
-      return this.dateFormat(new Date(shorttime), "{J} {A} {t}:{ii}");
-    } else if (cha < 86400) {
-      return this.dateFormat(new Date(shorttime), "{Z} {A} {t}:{ii}");
-    } else if (cha < 518400) {
-      // 隔天 显示日期+时间
-      return this.dateFormat(new Date(shorttime), "{MM}-{DD} {A} {t}:{ii}");
-    } else {
-      // 隔年 显示完整日期+时间
-      return this.dateFormat(new Date(shorttime), "{Y}-{MM}-{DD} {A} {t}:{ii}");
-    }
-  },
-
-  parseNumber: function parseNumber(num) {
-    return num < 10 ? "0" + num : num;
-  },
-
-  dateFormat: function dateFormat(date, formatStr) {
-    var dateObj = {},
-    rStr = /\{([^}]+)\}/,
-    mons = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二'];
-    dateObj["J"] = "今天";
-    dateObj["Z"] = "昨天";
-    dateObj["Y"] = date.getFullYear();
-    dateObj["M"] = date.getMonth() + 1;
-    dateObj["MM"] = this.parseNumber(dateObj["M"]);
-    dateObj["Mon"] = mons[dateObj['M'] - 1];
-    dateObj["D"] = date.getDate();
-    dateObj["DD"] = this.parseNumber(dateObj["D"]);
-    dateObj["h"] = date.getHours();
-    dateObj["hh"] = this.parseNumber(dateObj["h"]);
-    dateObj["t"] = dateObj["h"] > 12 ? dateObj["h"] - 12 : dateObj["h"];
-    dateObj["tt"] = this.parseNumber(dateObj["t"]);
-    dateObj["A"] = dateObj["h"] > 12 ? '下午' : '上午';
-    dateObj["i"] = date.getMinutes();
-    dateObj["ii"] = this.parseNumber(dateObj["i"]);
-    dateObj["s"] = date.getSeconds();
-    dateObj["ss"] = this.parseNumber(dateObj["s"]);
-    while (rStr.test(formatStr)) {
-      console.log(formatStr);
-      formatStr = formatStr.replace(rStr, dateObj[RegExp.$1]);
-    }
-    return formatStr;
-  } };var _default = _objectSpread({},
-
-
-
-gettime);exports.default = _default;
-
-/***/ }),
-
 /***/ 14:
 /*!********************************************************************!*\
   !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
@@ -1677,6 +1601,80 @@ function normalizeComponent (
   }
 }
 
+
+/***/ }),
+
+/***/ 145:
+/*!*******************************************************************************!*\
+  !*** C:/Users/Administrator/Documents/HBuilderProjects/mytest/common/time.js ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var gettime = {
+  // 获取聊天时间（相差300s内的信息不会显示时间）
+  getChatTime: function getChatTime(v1, v2) {
+    v1 = v1.toString().length < 13 ? v1 * 1000 : v1;
+    v2 = v2.toString().length < 13 ? v2 * 1000 : v2;
+    if ((parseInt(v1) - parseInt(v2)) / 1000 > 300) {
+      return this.gettime(v1);
+    }
+  },
+  // 人性化时间格式
+  gettime: function gettime(shorttime) {// 注意：时间戳必须为Number类型的
+    shorttime = shorttime.toString().length < 13 ? shorttime * 1000 : shorttime;
+    var now = new Date().getTime();
+    var cha = (now - parseInt(shorttime)) / 1000;
+
+    if (cha < 43200) {
+      // 当天
+      return this.dateFormat(new Date(shorttime), "{J} {A} {t}:{ii}");
+    } else if (cha < 86400) {
+      return this.dateFormat(new Date(shorttime), "{Z} {A} {t}:{ii}");
+    } else if (cha < 518400) {
+      // 隔天 显示日期+时间
+      return this.dateFormat(new Date(shorttime), "{MM}-{DD} {A} {t}:{ii}");
+    } else {
+      // 隔年 显示完整日期+时间
+      return this.dateFormat(new Date(shorttime), "{Y}-{MM}-{DD} {A} {t}:{ii}");
+    }
+  },
+
+  parseNumber: function parseNumber(num) {
+    return num < 10 ? "0" + num : num;
+  },
+
+  dateFormat: function dateFormat(date, formatStr) {
+    var dateObj = {},
+    rStr = /\{([^}]+)\}/,
+    mons = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二'];
+    dateObj["J"] = "今天";
+    dateObj["Z"] = "昨天";
+    dateObj["Y"] = date.getFullYear();
+    dateObj["M"] = date.getMonth() + 1;
+    dateObj["MM"] = this.parseNumber(dateObj["M"]);
+    dateObj["Mon"] = mons[dateObj['M'] - 1];
+    dateObj["D"] = date.getDate();
+    dateObj["DD"] = this.parseNumber(dateObj["D"]);
+    dateObj["h"] = date.getHours();
+    dateObj["hh"] = this.parseNumber(dateObj["h"]);
+    dateObj["t"] = dateObj["h"] > 12 ? dateObj["h"] - 12 : dateObj["h"];
+    dateObj["tt"] = this.parseNumber(dateObj["t"]);
+    dateObj["A"] = dateObj["h"] > 12 ? '下午' : '上午';
+    dateObj["i"] = date.getMinutes();
+    dateObj["ii"] = this.parseNumber(dateObj["i"]);
+    dateObj["s"] = date.getSeconds();
+    dateObj["ss"] = this.parseNumber(dateObj["s"]);
+    while (rStr.test(formatStr)) {
+      formatStr = formatStr.replace(rStr, dateObj[RegExp.$1]);
+    }
+    return formatStr;
+  } };var _default = _objectSpread({},
+
+
+
+gettime);exports.default = _default;
 
 /***/ }),
 
@@ -2675,7 +2673,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   []],
   //一周的视频的详细信息
   videoUrl: {}, // 视频的播放地址 vID ；[url]，
-  danmuList: [] };exports.default = _default;
+  danmuList: [], //弹幕列表
+  search: [] // 搜索列表
+};exports.default = _default;
 
 /***/ }),
 
@@ -2696,11 +2696,13 @@ var _storeTypes = __webpack_require__(/*! ./storeTypes.js */ 23);function _inter
 
 
 
-reqDetailInfo = _index.default.reqDetailInfo,reqRecommend = _index.default.reqRecommend,reqVideoUrl = _index.default.reqVideoUrl,reqAllDetailInfo = _index.default.reqAllDetailInfo,reqDanMu = _index.default.reqDanMu,addNewDoc = _index.default.addNewDoc; // 这里要注意，用export default 暴露出的对象，不能在import时直接解构
+
+
+reqDetailInfo = _index.default.reqDetailInfo,reqRecommend = _index.default.reqRecommend,reqVideoUrl = _index.default.reqVideoUrl,reqSearch = _index.default.reqSearch,reqAllDetailInfo = _index.default.reqAllDetailInfo,reqDanMu = _index.default.reqDanMu,addNewDoc = _index.default.addNewDoc; // 这里要注意，用export default 暴露出的对象，不能在import时直接解构
 var _default =
 {
   getRecommend: function () {var _getRecommend = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(_ref, num) {var commit, result;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:commit = _ref.commit;_context.next = 3;return (
-                reqRecommend(num = 0));case 3:result = _context.sent;
+                reqRecommend(num));case 3:result = _context.sent;
               commit(_storeTypes.RECEIVE_RECOMMEND, { recommend: result });case 5:case "end":return _context.stop();}}}, _callee, this);}));function getRecommend(_x, _x2) {return _getRecommend.apply(this, arguments);}return getRecommend;}(),
 
   getDetailInfo: function () {var _getDetailInfo = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2(_ref2, day) {var commit, condition, result;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:commit = _ref2.commit;
@@ -2708,21 +2710,30 @@ var _default =
               };_context2.next = 4;return reqDetailInfo(condition);case 4:result = _context2.sent;
               commit(_storeTypes.RECEIVE_DETAILINFO, { detailInfo: result, day: day });case 6:case "end":return _context2.stop();}}}, _callee2, this);}));function getDetailInfo(_x3, _x4) {return _getDetailInfo.apply(this, arguments);}return getDetailInfo;}(),
 
-  getVideoUrl: function () {var _getVideoUrl = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3(_ref3, vID) {var commit, result;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:commit = _ref3.commit;_context3.next = 3;return (
-                reqVideoUrl(vID));case 3:result = _context3.sent;
-              console.log(result);
-              commit(_storeTypes.RECEIVE_VIDEOURL, { videoUrl: result[0].URL[0], vID: vID });case 6:case "end":return _context3.stop();}}}, _callee3, this);}));function getVideoUrl(_x5, _x6) {return _getVideoUrl.apply(this, arguments);}return getVideoUrl;}(),
+  getSearch: function () {var _getSearch = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3(_ref3, text) {var commit, result;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:commit = _ref3.commit;_context3.next = 3;return (
+                reqSearch(text));case 3:result = _context3.sent;
+              commit(_storeTypes.RECEIVE_SEARCH, { search: result });case 5:case "end":return _context3.stop();}}}, _callee3, this);}));function getSearch(_x5, _x6) {return _getSearch.apply(this, arguments);}return getSearch;}(),
 
-  getAllDetailInfo: function () {var _getAllDetailInfo = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4(_ref4) {var commit, result;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:commit = _ref4.commit;_context4.next = 3;return (
-                reqAllDetailInfo());case 3:result = _context4.sent;
-              commit(_storeTypes.RECEIVE_ALLDETAILINFO, { allDetailInfo: result });case 5:case "end":return _context4.stop();}}}, _callee4, this);}));function getAllDetailInfo(_x7) {return _getAllDetailInfo.apply(this, arguments);}return getAllDetailInfo;}(),
 
-  getDanMu: function () {var _getDanMu = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee5(_ref5, _ref6) {var commit, vID, playIndex, result;return _regenerator.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:commit = _ref5.commit;vID = _ref6.vID, playIndex = _ref6.playIndex;_context5.next = 4;return (
-                reqDanMu(vID, playIndex));case 4:result = _context5.sent;
-              commit(_storeTypes.RECEIVE_DanMu, { danmuList: result });case 6:case "end":return _context5.stop();}}}, _callee5, this);}));function getDanMu(_x8, _x9) {return _getDanMu.apply(this, arguments);}return getDanMu;}(),
+  getVideoUrl: function () {var _getVideoUrl = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4(_ref4, vID) {var commit, result;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:commit = _ref4.commit;_context4.next = 3;return (
+                reqVideoUrl(vID));case 3:result = _context4.sent;
+              commit(_storeTypes.RECEIVE_VIDEOURL, { videoUrl: result[0].URL[0], vID: vID });case 5:case "end":return _context4.stop();}}}, _callee4, this);}));function getVideoUrl(_x7, _x8) {return _getVideoUrl.apply(this, arguments);}return getVideoUrl;}(),
 
-  addDanMu: function () {var _addDanMu = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee6(_ref7, data) {var commit, result;return _regenerator.default.wrap(function _callee6$(_context6) {while (1) {switch (_context6.prev = _context6.next) {case 0:commit = _ref7.commit;_context6.next = 3;return (
-                addNewDoc('danMu', data));case 3:result = _context6.sent;case 4:case "end":return _context6.stop();}}}, _callee6, this);}));function addDanMu(_x10, _x11) {return _addDanMu.apply(this, arguments);}return addDanMu;}() };exports.default = _default;
+  getAllDetailInfo: function () {var _getAllDetailInfo = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee5(_ref5) {var commit, result;return _regenerator.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:commit = _ref5.commit;_context5.next = 3;return (
+                reqAllDetailInfo());case 3:result = _context5.sent;
+              commit(_storeTypes.RECEIVE_ALLDETAILINFO, { allDetailInfo: result });case 5:case "end":return _context5.stop();}}}, _callee5, this);}));function getAllDetailInfo(_x9) {return _getAllDetailInfo.apply(this, arguments);}return getAllDetailInfo;}(),
+
+  getDanMu: function () {var _getDanMu = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee6(_ref6, _ref7) {var commit, vID, playIndex, result;return _regenerator.default.wrap(function _callee6$(_context6) {while (1) {switch (_context6.prev = _context6.next) {case 0:commit = _ref6.commit;vID = _ref7.vID, playIndex = _ref7.playIndex;_context6.next = 4;return (
+                reqDanMu(vID, playIndex));case 4:result = _context6.sent;
+              commit(_storeTypes.RECEIVE_DanMu, { danmuList: result });case 6:case "end":return _context6.stop();}}}, _callee6, this);}));function getDanMu(_x10, _x11) {return _getDanMu.apply(this, arguments);}return getDanMu;}(),
+
+
+  addDanMu: function () {var _addDanMu = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee7(_ref8, data) {var commit, result;return _regenerator.default.wrap(function _callee7$(_context7) {while (1) {switch (_context7.prev = _context7.next) {case 0:commit = _ref8.commit;_context7.next = 3;return (
+                addNewDoc('danMu', data));case 3:result = _context7.sent;case 4:case "end":return _context7.stop();}}}, _callee7, this);}));function addDanMu(_x12, _x13) {return _addDanMu.apply(this, arguments);}return addDanMu;}(),
+
+  claerSearch: function claerSearch(_ref9) {var commit = _ref9.commit;
+    commit(_storeTypes.DELETE_SEARCH);
+  } };exports.default = _default;
 
 /***/ }),
 
@@ -9489,12 +9500,9 @@ if (hadRuntime) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 wx.cloud.init();
 var db = wx.cloud.database();var _default =
-
-
-
 
 
 {
@@ -9543,6 +9551,25 @@ var db = wx.cloud.database();var _default =
       });
     });
   },
+  reqSearch: function reqSearch(text) {
+    return new Promise(function (resolve, reject) {
+      db.collection('allDetailInfo').
+      where({
+        name: db.RegExp({
+          regexp: text,
+          options: 'i' }) }).
+
+
+      get().
+      then(function (res) {
+        resolve(res.data);
+
+      }).
+      catch(function (err) {
+        reject(err);
+      });
+    });
+  },
   reqDanMu: function reqDanMu(vID, playIndex) {
     return new Promise(function (resolve, reject) {
       db.collection('danMu').
@@ -9559,27 +9586,78 @@ var db = wx.cloud.database();var _default =
       });
     });
   },
+  reqUser: function reqUser(openId) {
+    return new Promise(function (resolve, reject) {
+      db.collection('users').
+      where({
+        _openid: openId }).
+
+      get().
+      then(function (res) {
+        resolve(res.data);
+      }).
+      catch(function (err) {
+        reject(err);
+      });
+    });
+
+  },
   addNewDoc: function addNewDoc(collection, data) {
     db.collection(collection).add({
       data: data,
       createTime: db.serverDate(),
       success: function success(res) {
         // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+        uni.setStorage({
+          key: '_id',
+          data: res._id,
+          success: function success(result) {
+            console.log(result);
+          } });
+
         console.log(res);
       },
       fail: console.error });
 
   },
-  updateDoc: function updateDoc(_id, newObj) {
-    db.collection('user').doc('todo-identifiant-aleatoire').update({
-      // data 传入需要局部更新的数据
-      data: {
-        newObj: newObj },
+  updateDoc: function updateDoc(collection, data) {var _this = this;
+    uni.getStorage({
+      key: '_id',
+      success: function success(res) {
+        console.log(45678789);
+        console.log(res);
+        var _id = res.data;
+        if (!_id) {throw new Error(_id);}
+        db.collection(collection).doc(_id).
+        update({
+          data: _objectSpread({},
+          data) });
 
-      success: console.log,
-      fail: console.error });
 
+        console.log(data);
+      },
+      fail: function fail(err) {
+        console.log(err);
+        _this.addNewDoc(collection, data);
+      } });
+
+
+  },
+  callFunction: function callFunction(name) {
+    return new Promise(function (resolve, reject) {
+      wx.cloud.callFunction({ //
+        // 要调用的云函数名称
+        name: name,
+        success: function success(res) {
+          resolve(res);
+        },
+        fail: function fail(err) {
+          reject(err);
+        } });
+
+    });
   } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
@@ -9591,11 +9669,13 @@ var db = wx.cloud.database();var _default =
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.RECEIVE_RECOMMEND = exports.RECEIVE_DanMu = exports.RECEIVE_ALLDETAILINFO = exports.RECEIVE_VIDEOURL = exports.RECEIVE_DETAILINFO = void 0;var RECEIVE_DETAILINFO = 'receive_detailInfo';exports.RECEIVE_DETAILINFO = RECEIVE_DETAILINFO;
+Object.defineProperty(exports, "__esModule", { value: true });exports.DELETE_SEARCH = exports.RECEIVE_SEARCH = exports.RECEIVE_RECOMMEND = exports.RECEIVE_DanMu = exports.RECEIVE_ALLDETAILINFO = exports.RECEIVE_VIDEOURL = exports.RECEIVE_DETAILINFO = void 0;var RECEIVE_DETAILINFO = 'receive_detailInfo';exports.RECEIVE_DETAILINFO = RECEIVE_DETAILINFO;
 var RECEIVE_VIDEOURL = 'receive_videourl';exports.RECEIVE_VIDEOURL = RECEIVE_VIDEOURL;
 var RECEIVE_ALLDETAILINFO = 'receive_alldetailinfo';exports.RECEIVE_ALLDETAILINFO = RECEIVE_ALLDETAILINFO;
 var RECEIVE_DanMu = 'receive_danmu';exports.RECEIVE_DanMu = RECEIVE_DanMu;
 var RECEIVE_RECOMMEND = 'receive_recommend';exports.RECEIVE_RECOMMEND = RECEIVE_RECOMMEND;
+var RECEIVE_SEARCH = 'receive_search';exports.RECEIVE_SEARCH = RECEIVE_SEARCH;
+var DELETE_SEARCH = 'delete_search';exports.DELETE_SEARCH = DELETE_SEARCH;
 
 /***/ }),
 
@@ -9618,6 +9698,8 @@ var _storeTypes = __webpack_require__(/*! ./storeTypes.js */ 23);var _RECEIVE_RE
 
 
 
+
+
 _storeTypes.RECEIVE_RECOMMEND, function (state, _ref) {var _state$recommend;var recommend = _ref.recommend;
   (_state$recommend = state.recommend).push.apply(_state$recommend, _toConsumableArray(recommend));
 
@@ -9626,20 +9708,32 @@ _storeTypes.RECEIVE_DETAILINFO, function (state, _ref2) {var detailInfo = _ref2.
 
   state.detailInfo[day] = detailInfo;
 }), _defineProperty(_RECEIVE_RECOMMEND$RE,
-_storeTypes.RECEIVE_VIDEOURL, function (state, _ref3) {var videoUrl = _ref3.videoUrl,vID = _ref3.vID;
+_storeTypes.RECEIVE_SEARCH, function (state, _ref3) {var search = _ref3.search;
+  if (!search.length) {
+    state.search = -1;
+  } else {
+    state.search = search;
+  }
+}), _defineProperty(_RECEIVE_RECOMMEND$RE,
+
+_storeTypes.RECEIVE_VIDEOURL, function (state, _ref4) {var videoUrl = _ref4.videoUrl,vID = _ref4.vID;
   // state.videoUrl[vID] = videoUrl
   _vue.default.set(state.videoUrl, vID, videoUrl);
 }), _defineProperty(_RECEIVE_RECOMMEND$RE,
-_storeTypes.RECEIVE_ALLDETAILINFO, function (state, _ref4) {var allDetailInfo = _ref4.allDetailInfo;
-  console.log(allDetailInfo);
-  allDetailInfo.map(function (item) {var
-    updateDay = item.updateDay;
-    state.detailInfo[updateDay].push(item);
-  });
-}), _defineProperty(_RECEIVE_RECOMMEND$RE,
+
+
+
+
+
+
+
 _storeTypes.RECEIVE_DanMu, function (state, _ref5) {var danmuList = _ref5.danmuList,vID = _ref5.vID;
   state.danmuList = danmuList;
   console.log(state.danmuList);
+
+}), _defineProperty(_RECEIVE_RECOMMEND$RE,
+_storeTypes.DELETE_SEARCH, function (state) {
+  state.search = [];
 }), _RECEIVE_RECOMMEND$RE);exports.default = _default;
 
 /***/ }),
@@ -10625,7 +10719,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": {}, "pages/admin/admin": {}, "pages/profile/profile": {}, "pages/play-recorde/play-recorde": {}, "pages/profile-like/profile-like": { "navigationBarTitleText": "我的追番" }, "pages/everyday/everyday": { "navigationBarTitleText": "每日更新" }, "pages/everyday-list-detail/everyday-list-detail": {}, "pages/paper/paper": { "enablePullDownRefresh": true }, "pages/search/search": {} }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "嗅事百科", "navigationBarBackgroundColor": "#FFFFFF", "backgroundColor": "#FFFFFF" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "enablePullDownRefresh": true }, "pages/everyday-list-detail/everyday-list-detail": {}, "pages/search/search": {}, "pages/admin/admin": {}, "pages/profile/profile": {}, "pages/play-recorde/play-recorde": {}, "pages/profile-like/profile-like": { "navigationBarTitleText": "我的追番" }, "pages/everyday/everyday": { "navigationBarTitleText": "每日更新", "enablePullDownRefresh": true } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "馋动漫", "navigationBarBackgroundColor": "#FFFFFF", "backgroundColor": "#FFFFFF", "style": { "app-plus": { "background": "#000000" } } } };exports.default = _default;
 
 /***/ }),
 

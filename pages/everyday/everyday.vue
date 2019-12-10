@@ -25,7 +25,6 @@
 <script>
 import everydayList from '../../components/everyday/everyday-list.vue';
 import headTab from '../../components/everyday/head-tab.vue';
-import loadingTip from '../../components/common/loading-tip.vue'
 import loading from "../../components/common/loading.vue"
 
 import { mapState } from 'vuex'
@@ -33,7 +32,6 @@ export default {
 	data() {
 		return {
 			loadingText:'上拉加载更多',
-			swiperHeight: 500,
 			currentIdx: 0,
 			tabBars: [
 				{
@@ -68,9 +66,16 @@ export default {
 		}	
 	},
 	computed:{
-		...mapState(['detailInfo'])
-	},
-	methods:{
+		...mapState(['detailInfo']),
+		swiperHeight(){
+			let height = 0;
+			uni.getSystemInfo({
+			    success: function (res) {
+			      height = res.windowHeight - uni.upx2px(100)
+			    }
+			});
+			return height
+		}
 		
 	},
 	onLoad() {
@@ -93,18 +98,13 @@ export default {
 		// });
 		
 	},
-	onNavigationBarSearchInputClicked() {
-		uni.navigateTo({
-			url: '../search/search',
-		});
-	},
-	onNavigationBarButtonTap(e) {
-		console.log(e)
-		if(e.index === 1) {
-			uni.navigateTo({
-				url: '../input-bar/input-bar'
-			})
-		}
+	onPullDownRefresh() {
+	        console.log('refresh');
+			for (let i = 0 ; i < 7; i++) {
+				this.$store.dispatch('getDetailInfo',i)
+				console.log(i);
+			}
+	        uni.stopPullDownRefresh();
 	},
 	methods: {
 		
@@ -130,13 +130,12 @@ export default {
 	components: {
 		everydayList,
 		headTab,
-		loadingTip,
 		loading
 
 	}
 };
 </script>
 
-<style lang="less">
+<style lang="less"> 
 
 </style>

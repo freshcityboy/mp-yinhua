@@ -3,12 +3,7 @@
 		<view class="index-list">	
 			<my-video :item="item" :trimVideoUrl="trimVideoUrl"></my-video>
 		</view>
-		<!-- 底部输入框 -->
-			<!-- 占位框，防止输入框盖住评论 -->
-			<!-- <view style="height:100px;"></view>
-			<bottom-input-bar @sentMsg="sentMsg"></bottom-input-bar> -->
-		<!-- 蒙版层	 -->
-		<!-- <mask-layer :show="isShowShareMore" @toggleShow="toggleShow"></mask-layer >	 -->
+
 	</view>
 </template>
 
@@ -23,36 +18,22 @@
 		data() {
 			return {
 				isShowShareMore:false,
-				item:{},
-				trimVideoUrl:[]
+				item:{}
 			}
 		},
 		computed:{
-			...mapState(['videoUrl'])
-		},
-		watch:{
-			item(newVal){
-				let {vID} = newVal
-				this.trimVideoUrl = this.videoUrl[vID]
+			...mapState(['videoUrl']),
+			trimVideoUrl(){
+				let {vID} = this.item
+				return this.videoUrl[vID]
 			}
 		},
-		methods: {
-			sentMsg(text){
-				if(!text){ return}
-				let now = Date.now()
-				// let gstime = time.getChatTime(now,this.msgs[this.msgs.length-1].time)
-				
-			},
-			toggleShow(){
-				this.isShowShareMore = !this.isShowShareMore
-			}
-		},
+
 		onLoad(data) {
 			this.item = JSON.parse(data.item)
 			uni.setNavigationBarTitle({
 				title: this.item .name
 			})
-			
 		},
 		onNavigationBarButtonTap(e) {
 			if(e.index===0){

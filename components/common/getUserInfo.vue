@@ -13,6 +13,12 @@
 <script>
 	import maskLayer from "../../components/common/mask-layer.vue"
 	export default {
+		props:{
+			isRefresh:{
+				type:Boolean,
+				default:false
+			}
+		},
 		data() {
 			return {
 				showTip:false,
@@ -20,22 +26,57 @@
 	
 			}
 		},
-		
+		watch:{
+			isRefresh(newVal){
+				if(newVal){
+					this.showMask = true
+					this.showTip = true 
+				}
+			}
+		},
 		methods: {
 			
 			getuserinfo(e){
-				let {userInfo} = e.detail
+				let {userInfo} = e.detail;
+				let playInfo = [] ;
 				userInfo.like = []
 				wx.cloud.callFunction({ // 调用云函数读取用户信息
 				  // 要调用的云函数名称
 				  name: 'login',
-				  success: res => { //利用assign 将两个对象合并起来
-					userInfo = Object.assign(userInfo,res.result.event.userInfo)	 
-					getApp().globalData.userInfo  = userInfo
-					getApp().globalData.playInfo = [] 
+				  success: res => { 
+					const {openId} = res.result.event.userInfo
+					this.$api.reqUser(openId).then(response=>{
+						response = response[response.length-1]
+						console.log(response);
+						if(!response){
+							userInfo = Object.assign(userInfo,res.result.event.userInfo)
+						}else{
+							userInfo  = response.userInfo
+							playInfo = response.playInfo
+							console.log(playInfo);
+							if(response._id){
+								uni.setStorage({
+									key: '_id',
+									data: response._id,
+									success: (result)=> {
+										console.log(result);	
+									}
+								})
+							}
+							
+						}
+						getApp().globalData.userInfo  = userInfo
+						getApp().globalData.playInfo = playInfo
+					}).catch(error=>{//利用assign 将两个对象合并起来
+						console.log(error);
+					})
+					
 					uni.setStorage({
-					    key: 'userInfo',
-						data: userInfo ,
+					    key: 'user',
+						data:{
+							 userInfo ,
+							 playInfo
+						},
 					    success: function (res) {		
 					      // console.log(res);
 					    }
@@ -53,12 +94,10 @@
 		},
 		onReady() {
 			let userInfo = getApp().globalData.userInfo
-			if(!userInfo) {
-				this.$nextTick(()=>{
-					this.showTip = true
-					this.showMask = true				
-				})
-			}
+			if(!userInfo ) {
+				this.showTip = true
+				this.showMask = true	
+			}	
 		},
 		components:{
 			maskLayer,

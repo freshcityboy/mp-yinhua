@@ -3,8 +3,8 @@
 		<scroll-view id="tab-bar" class="scroll-h " :scroll-x="true" show-scrollbar="false">
 			<block v-for="(tab, index) in tabBars" :key="tab.id">
 				<view class="uni-tab-item " :class="barClass" @tap="ontabtap(index)">
-					<text class="uni-tab-item-title u-f-ajc " 
-						:class="[currentIdx === index ? 'active' : '']"
+					<text class="uni-tab-item-title u-f-ajc animated" 
+						:class="[currentIdx === index ? 'active fadeIn fast' : '']"
 						>
 							{{ tab.name }} {{tab.num?tab.num:''}}
 						<view class="swiper-table-line"></view>

@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/everyday-list-detail/everyday-list-detail",
+    "pages/search/search",
+    "pages/admin/admin",
+    "pages/profile/profile",
+    "pages/play-recorde/play-recorde",
+    "pages/profile-like/profile-like",
+    "pages/everyday/everyday"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "馋动漫",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#FFFFFF",
+    "style": {
+      "app-plus": {
+        "background": "#000000"
+      }
+    }
+  },
+  "tabBar": {
+    "color": "#ADADAD",
+    "selectedColor": "#4d9df5",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/tableBar/index.png",
+        "selectedIconPath": "static/tableBar/index-on.png"
+      },
+      {
+        "pagePath": "pages/everyday/everyday",
+        "text": "每日更新",
+        "iconPath": "static/tableBar/news.png",
+        "selectedIconPath": "static/tableBar/news-on.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "static/tableBar/profile.png",
+        "selectedIconPath": "static/tableBar/profile-on.png"
+      }
+    ]
+  },
+  "useingcomponents": true,
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
+}

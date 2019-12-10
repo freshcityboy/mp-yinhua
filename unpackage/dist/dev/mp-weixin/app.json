@@ -1,21 +1,25 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/everyday-list-detail/everyday-list-detail",
+    "pages/search/search",
     "pages/admin/admin",
     "pages/profile/profile",
     "pages/play-recorde/play-recorde",
     "pages/profile-like/profile-like",
-    "pages/everyday/everyday",
-    "pages/everyday-list-detail/everyday-list-detail",
-    "pages/paper/paper",
-    "pages/search/search"
+    "pages/everyday/everyday"
   ],
   "subPackages": [],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "嗅事百科",
+    "navigationBarTitleText": "馋动漫",
     "navigationBarBackgroundColor": "#FFFFFF",
-    "backgroundColor": "#FFFFFF"
+    "backgroundColor": "#FFFFFF",
+    "style": {
+      "app-plus": {
+        "background": "#000000"
+      }
+    }
   },
   "tabBar": {
     "color": "#ADADAD",
@@ -36,20 +40,13 @@
         "selectedIconPath": "static/tableBar/news-on.png"
       },
       {
-        "pagePath": "pages/paper/paper",
-        "text": "小纸条",
-        "iconPath": "static/tableBar/paper.png",
-        "selectedIconPath": "static/tableBar/paper-on.png"
-      },
-      {
         "pagePath": "pages/profile/profile",
         "text": "我的",
-        "iconPath": "static/tableBar/home.png",
-        "selectedIconPath": "static/tableBar/home-on.png"
+        "iconPath": "static/tableBar/profile.png",
+        "selectedIconPath": "static/tableBar/profile-on.png"
       }
     ]
   },
   "useingcomponents": true,
-  "usingComponents": {},
-  "sitemapLocation": "sitemap80.json"
+  "usingComponents": {}
 }

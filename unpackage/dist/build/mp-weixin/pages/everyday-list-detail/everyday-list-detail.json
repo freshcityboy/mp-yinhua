@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "bottom-input-bar": "/components/common/bottom-input-bar",
+    "mask-layer": "/components/common/mask-layer",
+    "my-video": "/components/video/video"
+  }
+}

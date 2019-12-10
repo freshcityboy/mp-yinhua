@@ -9,7 +9,6 @@ const gettime = {
 	},
 	// 人性化时间格式
 	gettime(shorttime){ // 注意：时间戳必须为Number类型的
-		console.log(new Date(shorttime));
 		shorttime=shorttime.toString().length<13 ? shorttime*1000 : shorttime;
 		let now = (new Date()).getTime();
 		let cha = (now-parseInt(shorttime))/1000;
@@ -54,7 +53,6 @@ const gettime = {
 		dateObj["s"] = date.getSeconds();
 		dateObj["ss"] = this.parseNumber(dateObj["s"]);
 		while(rStr.test(formatStr)) {
-			console.log(formatStr);
 			formatStr = formatStr.replace(rStr, dateObj[RegExp.$1]);
 		}
 		return formatStr;

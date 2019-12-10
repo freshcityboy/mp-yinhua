@@ -1,7 +1,0 @@
-{
-  "enablePullDownRefresh": true,
-  "usingComponents": {
-    "loading-tip": "/components/common/loading-tip",
-    "paper-list": "/components/paper-list/paper-list"
-  }
-}

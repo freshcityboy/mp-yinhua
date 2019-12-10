@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "index-list-item": "/components/index/index-list-item"
+  },
+  "component": true
+}

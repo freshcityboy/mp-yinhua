@@ -16,13 +16,11 @@
           flex: 1;
 }
 .my-info .username > view.data-v-0ec320d8:first-child {
-  font-size: 35rpx;
+  font-size: 40rpx;
 }
-.my-info .username > view.data-v-0ec320d8:last-child {
-  color: #BEBEBE;
-  font-size: 20rpx;
-}
-.my-info .icon-jinru.data-v-0ec320d8 {
+.my-info .icon-shuaxin.data-v-0ec320d8 {
   width: 50rpx;
+  font-size: 40rpx;
+  margin-right: 20rpx;
 }
 

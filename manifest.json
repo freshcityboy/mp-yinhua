@@ -1,5 +1,5 @@
 {
-    "name" : "mytest",
+    "name" : "日馋番番",
     "appid" : "",
     "description" : "",
     "versionName" : "1.0.0",
@@ -58,12 +58,14 @@
     "mp-weixin" : {
         "appid" : "wx8a525fd36086c7a9",
         "useingcomponents" : true,
-        "setting" : {  
+        "setting" : {
             "urlCheck" : false,
-            "es6" : true
+            "es6" : true,
+            "minified" : true,
+            "postcss" : true
         },
         "usingComponents" : true,
-		 "cloudfunctionRoot": "./functions/"
+        "cloudfunctionRoot" : "./functions/"
     },
     "mp-alipay" : {
         "usingComponents" : true
